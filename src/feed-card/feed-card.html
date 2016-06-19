@@ -1,0 +1,50 @@
+<!--
+A comment describing this element
+
+Example:
+
+    <my-elem></my-elem>
+
+Example:
+
+    <my-elem>
+      <h2>Hello my-elem</h2>
+    </my-elem>
+
+@demo demo/index.html
+-->
+
+<dom-module id="feed-card">
+    <template>
+        <style>
+            :host {
+                display: block;
+            }
+
+            paper-material {
+                padding: 15px;
+            }
+
+            iron-image {
+                width: 64px;
+                height: 64px;
+                border-radius: 100%;
+
+                --iron-image-placeholder: {
+                      border-radius: 100%;
+                };
+            }
+        </style>
+        <paper-material elevation="3">
+            <div>
+                <iron-image placeholder="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEASABIAAD//gA7Q1JFQVRPUjogZ2QtanBlZyB2MS4wICh1c2luZyBJSkcgSlBFRyB2NjIpLCBxdWFsaXR5ID0gNzAK/9sAQwABAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEB/9sAQwEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEB/8IAEQgAAwAEAwERAAIRAQMRAf/EABQAAQAAAAAAAAAAAAAAAAAAAAD/xAAUAQEAAAAAAAAAAAAAAAAAAAAI/9oADAMBAAIQAxAAAAEVkd//xAAWEAEBAQAAAAAAAAAAAAAAAAADAQT/2gAIAQEAAQUChHmX/8QAGxEBAQEAAgMAAAAAAAAAAAAAAQMCBBEAIUH/2gAIAQMBAT8BhCPFzqPGliMjak55M5F6V6Pq+3z/xAAdEQACAgIDAQAAAAAAAAAAAAABAwIEESEAEkET/9oACAECAQE/AX2rF35WLb22HzSvs1szKZxkDZ8A0B5z/8QAHRAAAgIDAAMAAAAAAAAAAAAAAQIDIQQRMQBBUf/aAAgBAQAGPwLLhgQJGuXNpe/PbbY1Vk0AODz/xAAWEAEBAQAAAAAAAAAAAAAAAAABESH/2gAIAQEAAT8hOgoVgJK0oAsCMA//2gAMAwEAAgADAAAAEB//xAAXEQEBAQEAAAAAAAAAAAAAAAABEQAx/9oACAEDAQE/ED4br5KIKlOqq13/xAAWEQEBAQAAAAAAAAAAAAAAAAABEQD/2gAIAQIBAT8QaMCI2assACAIAb//xAAWEAEBAQAAAAAAAAAAAAAAAAABABH/2gAIAQEAAT8QNx5qo3QG8kRE/9k="
+                                sizing="cover" preload fade src="../../images/img1.jpg"></iron-image>
+            </div>
+        </paper-material>
+    </template>
+    <script>
+        Polymer({
+            is: 'feed-card'
+        });
+    </script>
+</dom-module>

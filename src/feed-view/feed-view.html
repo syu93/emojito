@@ -1,0 +1,32 @@
+<!--
+A comment describing this element
+
+Example:
+
+    <my-elem></my-elem>
+
+Example:
+
+    <my-elem>
+      <h2>Hello my-elem</h2>
+    </my-elem>
+
+@demo demo/index.html
+-->
+    
+<link rel="import" href="../shared-styles/shared-styles.html">
+<link rel="import" href="../feed-card/feed-card.html">
+<dom-module id="feed-view">
+    <template>
+        <style include="shared-styles"></style>
+        <style>
+            :host {}
+        </style>
+        <feed-card></feed-card>
+    </template>
+    <script>
+        Polymer({
+            is: 'feed-view'
+        });
+    </script>
+</dom-module>
