@@ -19,7 +19,8 @@
     "paper-tabs": "^1.6.2",
     "swipe-pages": "git@github.com:syu93/swipe-pages.git#^0.3.2",
     "paper-material": "^1.0.6",
-    "iron-image": "PolymerElements/iron-image#^1.2.3"
+    "iron-image": "PolymerElements/iron-image#^1.2.3",
+    "paper-button": "^1.0.12"
   },
   "devDependencies": {
     "web-component-tester": "^4.0.0"
