@@ -21,11 +21,12 @@ Example:
                 display: block;
             }
 
-            paper-material {
+            .top-card, .bottom-card {
                 padding: 15px;
             }
 
             iron-image {
+                display: inline-block;
                 width: 64px;
                 height: 64px;
                 border-radius: 100%;
@@ -34,17 +35,87 @@ Example:
                       border-radius: 100%;
                 };
             }
+
+            .feed-title {
+
+            }
+
+            .title {
+                display: inline-block;
+                vertical-align: top;
+                padding-left: 15px;
+            }
+
+            .title h1 {
+                font-size: 12px;
+                font-style: italic;
+            }
+
+            .feed-content {
+                margin-top: 1em;
+            }
+
+            .feed-button {
+                margin-top: 1em;
+                border-top: solid #666666 1px;
+            }
         </style>
         <paper-material elevation="3">
-            <div>
-                <iron-image placeholder="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEASABIAAD//gA7Q1JFQVRPUjogZ2QtanBlZyB2MS4wICh1c2luZyBJSkcgSlBFRyB2NjIpLCBxdWFsaXR5ID0gNzAK/9sAQwABAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEB/9sAQwEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEB/8IAEQgAAwAEAwERAAIRAQMRAf/EABQAAQAAAAAAAAAAAAAAAAAAAAD/xAAUAQEAAAAAAAAAAAAAAAAAAAAI/9oADAMBAAIQAxAAAAEVkd//xAAWEAEBAQAAAAAAAAAAAAAAAAADAQT/2gAIAQEAAQUChHmX/8QAGxEBAQEAAgMAAAAAAAAAAAAAAQMCBBEAIUH/2gAIAQMBAT8BhCPFzqPGliMjak55M5F6V6Pq+3z/xAAdEQACAgIDAQAAAAAAAAAAAAABAwIEESEAEkET/9oACAECAQE/AX2rF35WLb22HzSvs1szKZxkDZ8A0B5z/8QAHRAAAgIDAAMAAAAAAAAAAAAAAQIDIQQRMQBBUf/aAAgBAQAGPwLLhgQJGuXNpe/PbbY1Vk0AODz/xAAWEAEBAQAAAAAAAAAAAAAAAAABESH/2gAIAQEAAT8hOgoVgJK0oAsCMA//2gAMAwEAAgADAAAAEB//xAAXEQEBAQEAAAAAAAAAAAAAAAABEQAx/9oACAEDAQE/ED4br5KIKlOqq13/xAAWEQEBAQAAAAAAAAAAAAAAAAABEQD/2gAIAQIBAT8QaMCI2assACAIAb//xAAWEAEBAQAAAAAAAAAAAAAAAAABABH/2gAIAQEAAT8QNx5qo3QG8kRE/9k="
-                                sizing="cover" preload fade src="../../images/img1.jpg"></iron-image>
+            <div class="top-card">
+                <div class="feed-title">
+                    <iron-image placeholder="[[profile64]]"
+                                    sizing="cover" preload fade src="[[profile]]"></iron-image>
+                    <div class="title">
+                        <h1>[[userName]]</h1>
+                    </div>
+                </div>
+                <div class="feed-content">
+                    [[feedContent]]
+                </div>
+            </div>
+            <div class="bottom-card  feed-button">
+                <paper-button raised>REPLY</paper-button>
             </div>
         </paper-material>
     </template>
     <script>
         Polymer({
-            is: 'feed-card'
+            is: 'feed-card',
+            properties: {
+                profile: {
+
+                },
+                profile64: {
+
+                },
+                userName: {
+
+                },
+                feedContent : {
+
+                }
+            },
+            toDataUrl: function (url, callback, outputFormat){
+                var img = new Image();
+                img.crossOrigin = 'Anonymous';
+                img.onload = function(){
+                    var canvas = document.createElement('CANVAS');
+                    var ctx = canvas.getContext('2d');
+                    var dataURL;
+                    canvas.height = this.height;
+                    canvas.width = this.width;
+                    ctx.drawImage(this, 0, 0);
+                    dataURL = canvas.toDataURL(outputFormat);
+                    callback(dataURL);
+                    canvas = null; 
+                };
+                img.src = url;
+            },
+            ready: function () {
+                this.toDataUrl('http://localhost:8080/images/img1-small.jpg', (base64Img) => {
+                    this.profile64 = base64Img;
+                });
+            }
         });
     </script>
 </dom-module>
