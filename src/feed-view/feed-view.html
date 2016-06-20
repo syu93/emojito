@@ -22,15 +22,31 @@ Example:
         <style>
             :host {}
         </style>
-        <feed-card
-            profile="../../images/img1.jpg"
-            user-name="Plopman"
-            feed-content="Plop plop plop "
-        ></feed-card>
+        <iron-ajax
+             auto
+             url="../data.json"
+             handle-as="json"
+             on-response="handleResponse"></iron-ajax>
+        <template is="dom-repeat" items=[[feedData]] 
+            as=item index-as=index>
+            <feed-card
+                profile="[[item.profile]]"
+                user-name="[[item.userName]]"
+                feed-content="[[item.feedContent]]"
+            ></feed-card>
+        </template>
     </template>
     <script>
         Polymer({
-            is: 'feed-view'
+            is: 'feed-view',
+            properties: {
+                feedData: {
+
+                }
+            },
+            handleResponse : function (response) {
+                this.feedData = response.detail.response;
+            }
         });
     </script>
 </dom-module>

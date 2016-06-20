@@ -112,7 +112,7 @@ Example:
                 img.src = url;
             },
             ready: function () {
-                this.toDataUrl('http://localhost:8080/images/img1-small.jpg', (base64Img) => {
+                this.toDataUrl(this.profile.replace('.jpg', '-small.jpg'), (base64Img) => {
                     this.profile64 = base64Img;
                 });
             }
